@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: .
+#    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - 8000:8000
+    volumes:
+      - .:/Django-Relations
+    depends_on:
+      - db
+    environment:
+      - DJANGO_DB_HOST=db
+      - DJANGO_DB_PORT=3306
+      - DJANGO_DB_NAME=mydb
+      - DJANGO_DB_USER=root
+      - DJANGO_DB_PASSWORD=''
+
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: 'mydb'
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+    volumes:
+      - ./mysql_data/data:/var/lib/mysql
+
+volumes:
+  mysql_data:
