@@ -1,3 +1,6 @@
+*.pyc
+
+migrations/
 env/
 mysql_data/
 .idea/

@@ -13,7 +13,7 @@ RUN mkdir /Django-Relations
 WORKDIR /Django-Relations
 
 # Copy the current directory contents into the container at /music_service
-ADD . /Django-Relations/
+ADD . /Django-Relations
 
 # Install any needed packages specified in requirements.txt
 RUN pip install --upgrade pip && pip install -r req.txt

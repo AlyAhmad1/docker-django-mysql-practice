@@ -20,12 +20,14 @@ services:
       - DJANGO_DB_PASSWORD=''
 
   db:
-    image: mysql:5.7
-    environment:
-      MYSQL_DATABASE: 'mydb'
-      MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
-    volumes:
-      - ./mysql_data/data:/var/lib/mysql
+    image: postgres
 
-volumes:
-  mysql_data:
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+    volumes:
+      - ./postgres/data:/var/lib/postgresql/data
+
+    container_name: postgres_db
